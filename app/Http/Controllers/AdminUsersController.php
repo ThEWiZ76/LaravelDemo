@@ -51,7 +51,7 @@ class AdminUsersController extends Controller
             // file is uploaded, move it and attach to user
             $name = time() . $file->getClientOriginalName();
             $file->move('images', $name);
-            $photo = Photo::create('file'=>$name);
+            $photo = Photo::create(['file'=>$name]);
             $input['photo_id'] = $photo->id;
         }
         // be save, encrypt the password
@@ -60,7 +60,7 @@ class AdminUsersController extends Controller
         // creating the user in the db
         User::create($input);
         // return to user list
-        return redirect('admin.users');
+        return redirect('admin.users.index');
 
     }
 
