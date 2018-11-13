@@ -25,3 +25,28 @@ Route::get('/admin', function (){
 });
 
 Route::resource('admin/users', 'AdminUsersController');
+
+
+// add user login 2fa for more security
+
+Route::get('/2fa', 'PasswordSecurityController@show2faForm');
+
+Route::post('/generate2faSecret', [
+    'uses' => 'PasswordSecurityController@generate2faSecretCode',
+    'as' => 'generate2faSecretCode'
+]);
+
+Route::post('/enable2fa', [
+    'uses' => 'PasswordSecurityController@enable2fa',
+    'as' => 'enable2fa'
+]);
+
+Route::post('/disable2fa', [
+    'uses' => 'PasswordSecurityController@gdisable2fa',
+    'as' => 'disable2fa'
+]);
+
+Route::post('/2faVerify', function (){
+    //
+    return redirect(URL()->previous());
+})->name('2faVerify')->middleware('2fa');

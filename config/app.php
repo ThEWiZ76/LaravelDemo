@@ -149,6 +149,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        PragmaRX\Google2FALaravel\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -205,7 +206,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
+        'Google2FA' => PragmaRX\Google2FALaravel\Facade::class,
     ],
 
 ];

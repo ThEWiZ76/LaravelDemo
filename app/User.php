@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
 class User extends Authenticatable
 {
     /**
@@ -33,5 +34,9 @@ class User extends Authenticatable
     public function Photo(){
 
         return $this->belongsTo('App\Photo');
+    }
+
+    public function passwordSecurity(){
+        return $this->hasOne('App\PasswordSecurity');
     }
 }
