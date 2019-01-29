@@ -23,13 +23,9 @@
                 <tr>
                     <td height="50">{{$user->id}}</td>
                     <td>
-                        @if($user->photo)
-                            <img height="50" src="{{$user->photo->file}}" alt="">
-                            @else
-                            No image
-                            @endif
+                        <img height="50" src="{{$user->photo ? $user->photo->file : '/images/No_image_available.svg'}}" alt="">
                     </td>
-                    <td>{{$user->name}}</td>
+                    <td><a href="{{route('admin.users.edit', $user->id)}}">{{$user->name}}</a></td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role->name}}</td>
                     <td>@if($user->is_active)
